@@ -2,6 +2,7 @@
   "name": "ecommerce-inngest",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://shashwatsarvabhaum.github.io/QuickCart",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
