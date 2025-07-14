@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import { MONGODB_URI } from './env.js';
 
 let cached = global.mongoose;
 
@@ -14,6 +13,11 @@ async function dbConnect() {
 
   if (!cached.promise) {
     const MONGODB_URI = process.env.MONGODB_URI;
+
+    if (!MONGODB_URI) {
+      throw new Error('Please define the MONGODB_URI environment variable inside Vercel settings.');
+    }
+
     cached.promise = mongoose.connect(MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -24,4 +28,4 @@ async function dbConnect() {
   return cached.conn;
 }
 
-module.exports = dbConnect;
+export default dbConnect;
